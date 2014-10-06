@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.wk.domain">
+    <class name="CheckBack" table="CheckBack">
+        <id name="id" column="checkBack_id">
+            <generator class="increment" />
+        </id>
+        <property name="reason" type="String" />
+        <property name="result" type="boolean" not-null="true" />
+        <many-to-one name="manager" column="manager_id" class="Manager" not-null="true"  lazy="false" />
+        <many-to-one name="applicaiton" column="application_id" class="Application" unique="true" not-null="true" lazy="false" />
+    </class>
+</hibernate-mapping>

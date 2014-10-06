@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.wk.domain">
+    <class name="AttendType" table="AttendType">
+        <id name="id" column="type_id" type="int">
+            <generator class="increment" />
+        </id>
+        <property name="name" type="String" not-null="true" />
+        <property name="amerce" type="double" not-null="true" />
+        <set name="attends">
+            <key column="type_id" />
+            <one-to-many class="Attend" />
+        </set>
+        <set name="applications">
+            <key column="type_id" />
+            <one-to-many class="Application"/>
+        </set>
+    </class>
+</hibernate-mapping>

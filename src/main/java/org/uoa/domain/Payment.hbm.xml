@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.wk.domain">
+    <class name="Payment" table="Payment">
+        <id name="id" column="payment_id">
+            <generator class="increment" />
+        </id>
+        <property name="amount_paid" type="double" not-null="true" />
+        <property name="time_paid" type="java.util.Date" not-null="true" />
+        <many-to-one name="employee" column="employee_id"  class="Employee" not-null="true" lazy="false" />
+    </class>
+</hibernate-mapping>

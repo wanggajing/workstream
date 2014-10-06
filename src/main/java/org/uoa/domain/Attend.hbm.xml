@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.wk.domain">
+    <class name="Attend" table="Attend">
+        <id name="id" column="attend_id" type="int">
+            <generator class="increment" />
+        </id>
+        <property name="dutyDay" type="String" not-null="true" />
+        <property name="punchTime" type="java.util.Date" />
+        <property name="isCome" type="boolean" not-null="true" />
+        <many-to-one name="attendType" column="type_id" class="AttendType" not-null="true" lazy="false" />
+        <many-to-one name="employee" column="employee_id" class="Attend" not-null="true" lazy="false" />
+        <set name="applications" >
+            <key column="attend_id" />
+            <one-to-many class="Application" />
+        </set>
+    </class>
+</hibernate-mapping>
